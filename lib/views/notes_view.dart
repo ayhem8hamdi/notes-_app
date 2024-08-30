@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/widgets/noteItem.dart';
 import 'package:note_app/widgets/searchicon.dart';
 
 class NotesView extends StatelessWidget {
@@ -22,6 +23,7 @@ class NotesView extends StatelessWidget {
           ),
         ),
       ),
+      body: const Noteitem(),
     );
   }
 }
