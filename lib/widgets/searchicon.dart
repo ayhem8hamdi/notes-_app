@@ -12,7 +12,7 @@ class SearchIcon extends StatelessWidget {
         icon: Container(
           decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.05),
-              borderRadius: BorderRadius.circular(8)),
+              borderRadius: BorderRadius.circular(16)),
           width: 53,
           height: 40,
           child: const Icon(

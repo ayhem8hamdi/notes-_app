@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/widgets/noteItem.dart';
 
-// ignore: must_be_immutable
 class NoteItemBuilder extends StatelessWidget {
-  NoteItemBuilder({super.key, required this.index});
-  int index;
+  const NoteItemBuilder({super.key, required this.index});
+  final int index;
 
   @override
   Widget build(BuildContext context) {
