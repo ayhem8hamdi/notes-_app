@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/widgets/noteItem.dart';
+import 'package:note_app/widgets/NoteItemBuilder.dart';
 import 'package:note_app/widgets/searchicon.dart';
 
 class NotesView extends StatelessWidget {
@@ -23,7 +23,14 @@ class NotesView extends StatelessWidget {
           ),
         ),
       ),
-      body: const Noteitem(),
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 25,
+          ),
+          NoteItemBuilder(index: 7)
+        ],
+      ),
     );
   }
 }
