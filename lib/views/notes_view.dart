@@ -5,7 +5,7 @@ import 'package:note_app/widgets/searchicon.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({super.key});
-
+  static String id = 'NotesView';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +13,9 @@ class NotesView extends StatelessWidget {
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 10),
-            child: SearchIcon(),
+            child: SearchIcon(
+              iconData: Icons.search,
+            ),
           )
         ],
         title: const Padding(
