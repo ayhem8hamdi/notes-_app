@@ -3,8 +3,8 @@ import 'package:hive/hive.dart';
 import 'package:note_app/Cubits/AddNoteCubit/addnote_cubit_states.dart';
 import 'package:note_app/Models/note_model.dart';
 
-class NotesCubit extends Cubit<AddNoteStates> {
-  NotesCubit() : super(AddNoteInitial());
+class AddNoteCubit extends Cubit<AddNoteStates> {
+  AddNoteCubit() : super(AddNoteInitial());
 
   addnote(NoteModel note) async {
     emit(AddNoteLoading());
