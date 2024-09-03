@@ -17,7 +17,7 @@ class ModelBottomsheetForm extends StatefulWidget {
 
 class _ModelBottomsheetFormState extends State<ModelBottomsheetForm> {
   final GlobalKey<FormState> formkey = GlobalKey();
-  AutovalidateMode autovalidateMode = AutovalidateMode.always;
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, content;
   @override
   Widget build(BuildContext context) {

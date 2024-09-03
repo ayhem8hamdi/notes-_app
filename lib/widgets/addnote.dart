@@ -10,19 +10,22 @@ class AddNote extends StatelessWidget {
   const AddNote({super.key});
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AddNoteCubit, AddNoteStates>(
-      listener: (context, state) {
-        if (state is AddNoteSucces) {
-          Navigator.pop(context);
-        } else if (state is AddNoteFailure) {
-          print('failed');
-        }
-      },
-      builder: (context, state) {
-        return ModalProgressHUD(
-            inAsyncCall: state is AddNoteLoading ? true : false,
-            child: ListView(children: const [ModelBottomsheetForm()]));
-      },
+    return BlocProvider(
+      create: (context) => AddNoteCubit(),
+      child: BlocConsumer<AddNoteCubit, AddNoteStates>(
+        listener: (context, state) {
+          if (state is AddNoteSucces) {
+            Navigator.pop(context);
+          } else if (state is AddNoteFailure) {
+            print('failed');
+          }
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(
+              inAsyncCall: state is AddNoteLoading ? true : false,
+              child: ListView(children: const [ModelBottomsheetForm()]));
+        },
+      ),
     );
   }
 }
