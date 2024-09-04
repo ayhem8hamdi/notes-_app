@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, this.onpressed});
+  const CustomButton({super.key, this.onpressed, this.isLoading = false});
   final void Function()? onpressed;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,10 +14,12 @@ class CustomButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 14),
             backgroundColor: const Color(0xff4F378B)),
-        child: const Text(
-          'Add',
-          style: TextStyle(fontSize: 22),
-        ),
+        child: isLoading
+            ? const CircularProgressIndicator()
+            : const Text(
+                'Add',
+                style: TextStyle(fontSize: 22),
+              ),
       ),
     );
   }
