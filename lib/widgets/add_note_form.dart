@@ -69,7 +69,7 @@ class _ModelBottomsheetFormState extends State<ModelBottomsheetForm> {
                 },
               );
             },
-          )
+          ),
         ],
       ),
     );
