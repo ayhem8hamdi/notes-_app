@@ -5,9 +5,7 @@ import 'package:note_app/views/edit_note_view.dart';
 import 'package:note_app/widgets/NoteItemBuilder.dart';
 
 class NoteViewBody extends StatefulWidget {
-  const NoteViewBody({
-    super.key,
-  });
+  const NoteViewBody({super.key});
 
   @override
   State<NoteViewBody> createState() => _NoteViewBodyState();
@@ -16,8 +14,8 @@ class NoteViewBody extends StatefulWidget {
 class _NoteViewBodyState extends State<NoteViewBody> {
   @override
   void initState() {
-    BlocProvider.of<NotesCubit>(context).fetchNotes();
     super.initState();
+    BlocProvider.of<NotesCubit>(context).fetchNotes();
   }
 
   @override

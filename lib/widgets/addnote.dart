@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/Cubits/AddNoteCubit/addnote_cubit_states.dart';
 import 'package:note_app/Cubits/AddNoteCubit/addnotes_cubit.dart';
+import 'package:note_app/Cubits/NoteCubit/notes_cubit.dart';
 import 'package:note_app/widgets/add_note_form.dart';
 
 class AddNote extends StatelessWidget {
@@ -16,22 +15,27 @@ class AddNote extends StatelessWidget {
       child: BlocConsumer<AddNoteCubit, AddNoteStates>(
         listener: (context, state) {
           if (state is AddNoteSucces) {
+            BlocProvider.of<NotesCubit>(context).fetchNotes();
             Navigator.pop(context);
           } else if (state is AddNoteFailure) {
-            print('failed');
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Failed to add note')),
+            );
           }
         },
         builder: (context, state) {
           return AbsorbPointer(
-              absorbing: state is AddNoteLoading,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  bottom: (MediaQuery.of(context).viewInsets.bottom),
-                ),
-                child: const SingleChildScrollView(
-                  child: ModelBottomsheetForm(),
-                ),
-              ));
+            absorbing: state is AddNoteLoading,
+            child: Padding(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              child: const SingleChildScrollView(
+                child:
+                    ModelBottomsheetForm(), // Updated to AddNoteForm to match naming
+              ),
+            ),
+          );
         },
       ),
     );
