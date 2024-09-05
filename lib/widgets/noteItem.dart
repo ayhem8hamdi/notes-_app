@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/Models/note_model.dart';
 
 class Noteitem extends StatelessWidget {
-  const Noteitem({super.key});
-
+  const Noteitem({super.key, required this.not});
+  final NoteModel not;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,21 +18,21 @@ class Noteitem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           ListTile(
-            title: const Text(
-              'Flutter tips',
-              style: TextStyle(
+            title: Text(
+              not.title,
+              style: const TextStyle(
                   fontSize: 32,
                   color: Colors.black,
                   overflow: TextOverflow.ellipsis),
               maxLines: 1,
             ),
-            subtitle: const SizedBox(
+            subtitle: SizedBox(
               height: 74.7,
               child: Padding(
-                padding: EdgeInsets.only(top: 12, bottom: 15),
+                padding: const EdgeInsets.only(top: 12, bottom: 15),
                 child: Text(
-                  'Build your career with mugiwara',
-                  style: TextStyle(
+                  not.content,
+                  style: const TextStyle(
                       fontWeight: FontWeight.w400,
                       color: Colors.black45,
                       fontSize: 17,
