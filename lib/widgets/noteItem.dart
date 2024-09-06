@@ -49,11 +49,11 @@ class Noteitem extends StatelessWidget {
                   color: Colors.black,
                 )),
           ),
-          const Padding(
-            padding: EdgeInsets.only(right: 25, bottom: 15),
+          Padding(
+            padding: const EdgeInsets.only(right: 25, bottom: 15),
             child: Text(
-              'August 29,2024',
-              style: TextStyle(
+              not.date,
+              style: const TextStyle(
                 color: Colors.black45,
                 fontSize: 14,
               ),

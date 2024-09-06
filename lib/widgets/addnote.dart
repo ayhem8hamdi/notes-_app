@@ -19,7 +19,7 @@ class AddNote extends StatelessWidget {
             Navigator.pop(context);
           } else if (state is AddNoteFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Failed to add note')),
+              const SnackBar(content: Text('Failed to add note')),
             );
           }
         },

@@ -3,8 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/Cubits/AddNoteCubit/addnote_cubit_states.dart';
 import 'package:note_app/Cubits/AddNoteCubit/addnotes_cubit.dart';
-import 'package:note_app/Cubits/NoteCubit/notes_cubit.dart';
 import 'package:note_app/Models/note_model.dart';
+import 'package:note_app/helper/getDateSpecialFormatf.dart';
 import 'package:note_app/widgets/CustomButton.dart';
 import 'package:note_app/widgets/custom_text_field.dart';
 
@@ -61,7 +61,7 @@ class _ModelBottomsheetFormState extends State<ModelBottomsheetForm> {
                     NoteModel notemodel = NoteModel(
                         title: title!,
                         content: content!,
-                        date: DateTime.now().toString());
+                        date: dateSpecialFormat());
                     BlocProvider.of<AddNoteCubit>(context).addnote(notemodel);
                   } else {
                     autovalidateMode = AutovalidateMode.always;

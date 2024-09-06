@@ -10,13 +10,12 @@ class NotesCubit extends Cubit<NoteStates> {
 
   void fetchNotes() {
     try {
-      emit(NoteLoading()); // Emit loading state before fetching
+      emit(NoteLoading());
       var notesBox = Hive.box<NoteModel>('notes');
       not = notesBox.values.toList().reversed.toList();
-      emit(NoteSuccess(note: not)); // Emit success state with the fetched notes
+      emit(NoteSuccess(note: not));
     } catch (e) {
-      emit(NoteError(
-          message: e.toString())); // Emit error state if something goes wrong
+      emit(NoteError(message: e.toString()));
     }
   }
 }
