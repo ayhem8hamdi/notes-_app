@@ -6,8 +6,7 @@ import 'package:note_app/Cubits/NoteCubit/notes_cubit.dart';
 import 'package:note_app/widgets/noteItem.dart';
 
 class NoteItemBuilder extends StatelessWidget {
-  const NoteItemBuilder({super.key, required this.index});
-  final int index;
+  const NoteItemBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {

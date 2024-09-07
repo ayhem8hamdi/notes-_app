@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/Models/note_model.dart';
+
 import 'package:note_app/widgets/edit_note_body.dart';
 import 'package:note_app/widgets/searchicon.dart';
 
 class EditNoteView extends StatelessWidget {
   const EditNoteView({super.key});
   static String id = 'EditNoteView';
+
   @override
   Widget build(BuildContext context) {
+    NoteModel note = ModalRoute.of(context)!.settings.arguments as NoteModel;
     return Scaffold(
       appBar: AppBar(
-        actions: const [
+        actions: [
           Padding(
-            padding: EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.only(right: 10),
             child: SearchIcon(
+              onPressed: () {},
               iconData: Icons.check,
             ),
           )
@@ -25,7 +30,7 @@ class EditNoteView extends StatelessWidget {
           ),
         ),
       ),
-      body: const EditNoteBody(),
+      body: EditNoteBody(not: note),
     );
   }
 }
