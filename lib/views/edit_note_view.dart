@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/Cubits/AddNoteCubit/addnotes_cubit.dart';
+import 'package:note_app/Cubits/NoteCubit/notes_cubit.dart';
 import 'package:note_app/Models/note_model.dart';
-
-import 'package:note_app/widgets/edit_note_body.dart';
+import 'package:note_app/widgets/custom_text_field.dart';
 import 'package:note_app/widgets/searchicon.dart';
 
-class EditNoteView extends StatelessWidget {
+class EditNoteView extends StatefulWidget {
   const EditNoteView({super.key});
   static String id = 'EditNoteView';
 
+  @override
+  State<EditNoteView> createState() => _EditNoteViewState();
+}
+
+class _EditNoteViewState extends State<EditNoteView> {
+  String? first, contnt;
   @override
   Widget build(BuildContext context) {
     NoteModel note = ModalRoute.of(context)!.settings.arguments as NoteModel;
@@ -17,7 +25,14 @@ class EditNoteView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: SearchIcon(
-              onPressed: () {},
+              onPressed: () {
+                note.title = first ?? note.title;
+                note.content = contnt ?? note.content;
+                note.delete();
+                BlocProvider.of<AddNoteCubit>(context).addnote(note);
+                BlocProvider.of<NotesCubit>(context).fetchNotes();
+                Navigator.pop(context);
+              },
               iconData: Icons.check,
             ),
           )
@@ -30,7 +45,35 @@ class EditNoteView extends StatelessWidget {
           ),
         ),
       ),
-      body: EditNoteBody(not: note),
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 40,
+          ),
+          CustomTextField(
+            onChanged: (p0) {
+              first = p0;
+            },
+            val: note.title,
+            hint: 'Title',
+            maxLines: 1,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          CustomTextField(
+            onChanged: (p0) {
+              contnt = p0;
+            },
+            val: note.content,
+            hint: 'Content ...',
+            maxLines: 9,
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+        ],
+      ),
     );
   }
 }

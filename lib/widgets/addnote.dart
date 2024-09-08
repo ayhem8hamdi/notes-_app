@@ -10,34 +10,31 @@ class AddNote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddNoteCubit(),
-      child: BlocConsumer<AddNoteCubit, AddNoteStates>(
-        listener: (context, state) {
-          if (state is AddNoteSucces) {
-            BlocProvider.of<NotesCubit>(context).fetchNotes();
-            Navigator.pop(context);
-          } else if (state is AddNoteFailure) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Failed to add note')),
-            );
-          }
-        },
-        builder: (context, state) {
-          return AbsorbPointer(
-            absorbing: state is AddNoteLoading,
-            child: Padding(
-              padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom,
-              ),
-              child: const SingleChildScrollView(
-                child:
-                    ModelBottomsheetForm(), // Updated to AddNoteForm to match naming
-              ),
-            ),
+    return BlocConsumer<AddNoteCubit, AddNoteStates>(
+      listener: (context, state) {
+        if (state is AddNoteSucces) {
+          BlocProvider.of<NotesCubit>(context).fetchNotes();
+          Navigator.pop(context);
+        } else if (state is AddNoteFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Failed to add note')),
           );
-        },
-      ),
+        }
+      },
+      builder: (context, state) {
+        return AbsorbPointer(
+          absorbing: state is AddNoteLoading,
+          child: Padding(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: const SingleChildScrollView(
+              child:
+                  ModelBottomsheetForm(), // Updated to AddNoteForm to match naming
+            ),
+          ),
+        );
+      },
     );
   }
 }
