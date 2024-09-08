@@ -7,15 +7,18 @@ class CustomTextField extends StatelessWidget {
       required this.maxLines,
       this.onChanged,
       this.val = ''});
+
   final String hint;
   final String val;
   final int maxLines;
   final void Function(String?)? onChanged;
   @override
   Widget build(BuildContext context) {
+    TextEditingController controller = TextEditingController(text: val);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 26),
       child: TextFormField(
+        controller: controller,
         validator: (value) {
           if (value?.isEmpty ?? true) {
             return 'Field is empty man';
