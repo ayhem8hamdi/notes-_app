@@ -17,6 +17,7 @@ class SearchIcon extends StatelessWidget {
           child: Icon(
             iconData,
             size: 30,
+            color:Colors.white
           ),
         ));
   }

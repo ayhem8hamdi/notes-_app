@@ -6,15 +6,14 @@ class CustomTextField extends StatelessWidget {
       required this.hint,
       required this.maxLines,
       this.onChanged,
-      this.val = ''});
+      this.controller});
 
   final String hint;
-  final String val;
   final int maxLines;
+  final TextEditingController? controller;
   final void Function(String?)? onChanged;
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller = TextEditingController(text: val);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 26),
       child: TextFormField(

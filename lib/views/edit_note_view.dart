@@ -51,10 +51,10 @@ class _EditNoteViewState extends State<EditNoteView> {
             height: 40,
           ),
           CustomTextField(
+            controller: TextEditingController(text: note.title),
             onChanged: (p0) {
               first = p0;
             },
-            val: note.title,
             hint: 'Title',
             maxLines: 1,
           ),
@@ -62,10 +62,10 @@ class _EditNoteViewState extends State<EditNoteView> {
             height: 20,
           ),
           CustomTextField(
+            controller: TextEditingController(text: note.content),
             onChanged: (p0) {
               contnt = p0;
             },
-            val: note.content,
             hint: 'Content ...',
             maxLines: 9,
           ),
